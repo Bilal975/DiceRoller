@@ -1,5 +1,6 @@
 package com.example.ma18bbg.diceroller;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -8,16 +9,31 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.Random;
 
+import static com.example.ma18bbg.diceroller.R.id.numberTextView;
+
 public class MainActivity extends AppCompatActivity {
+
+
+    private TextView mgTv;
+    private EditText numberEntered;
+    private Button validate;
+    private Object numberToFind;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        mgTv = (TextView) findViewById(R.id.msg);
+        numberEntered = (EditText) findViewById(R.id.numberEntered);
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -53,14 +69,22 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+
     public void on_butoon_click(View view){
 
-        TextView tv = (TextView) this.findViewById(R.id.numberTextView);
+        TextView tv = (TextView) this.findViewById(numberTextView);
 
         Random r = new Random();
-        int number = r.nextInt(10);
+        int number = r.nextInt(6);
 
         tv.setText(Integer.toString(number));
 
+        int n = Integer.parseInt(numberEntered.getText().toString());
+
+            if (n < 1 || n > 6) {
+                Toast.makeText(this, "Invalid input, number must be within range", Toast.LENGTH_SHORT).show();
+            } else if (n == number) {
+                Toast.makeText(this, "Congratulations ! Numbers match bossman", Toast.LENGTH_SHORT).show();
+            }
     }
 }
