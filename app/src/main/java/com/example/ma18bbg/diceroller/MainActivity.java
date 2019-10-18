@@ -25,6 +25,9 @@ public class MainActivity extends AppCompatActivity {
     private EditText numberEntered;
     private Button validate;
     private Object numberToFind;
+    private int counter = 0;
+    private TextView cb;
+    private TextView cv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +36,10 @@ public class MainActivity extends AppCompatActivity {
 
         mgTv = (TextView) findViewById(R.id.msg);
         numberEntered = (EditText) findViewById(R.id.numberEntered);
+        cb = (TextView) findViewById(R.id.counter);
+        cv = (TextView) findViewById(R.id.cview);
+
+
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -85,6 +92,10 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(this, "Invalid input, number must be within range", Toast.LENGTH_SHORT).show();
             } else if (n == number) {
                 Toast.makeText(this, "Congratulations ! Numbers match bossman", Toast.LENGTH_SHORT).show();
+                counter = counter + 1;
+                cb.setText(Integer.toString(counter));
             }
+
+
     }
 }

@@ -5,4 +5,5 @@
     <item name="msg" type="id" />
     <item name="numberEntered" type="id" />
     <item name="validate" type="id" />
+    <item name="counter" type="id" />
 </resources>

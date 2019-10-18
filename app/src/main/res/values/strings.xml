@@ -3,4 +3,6 @@
     <string name="action_settings">Settings</string>
     <string name="button">Button</string>
     <string name="enter_between_1_and_6_only">Enter between 1 and 6 only!</string>
+    <string name="textview">TextView</string>
+    <string name="correct_guesses">Correct guesses:</string>
 </resources>
