@@ -1,7 +1,9 @@
 package com.example.ma18bbg.diceroller;
 
 import android.annotation.SuppressLint;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.RequiresApi;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -14,8 +16,11 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 
+import static com.example.ma18bbg.diceroller.R.id.listview;
 import static com.example.ma18bbg.diceroller.R.id.numberTextView;
 
 public class MainActivity extends AppCompatActivity {
@@ -28,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
     private int counter = 0;
     private TextView cb;
     private TextView cv;
+    private TextView ls;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
         numberEntered = (EditText) findViewById(R.id.numberEntered);
         cb = (TextView) findViewById(R.id.counter);
         cv = (TextView) findViewById(R.id.cview);
+        ls = (TextView) this.findViewById(R.id.listview);
 
 
 
@@ -79,23 +86,45 @@ public class MainActivity extends AppCompatActivity {
 
     public void on_butoon_click(View view){
 
+        int num = rnd_num();
+
         TextView tv = (TextView) this.findViewById(numberTextView);
 
-        Random r = new Random();
-        int number = r.nextInt(6);
-
-        tv.setText(Integer.toString(number));
+        tv.setText(Integer.toString(num));
 
         int n = Integer.parseInt(numberEntered.getText().toString());
 
             if (n < 1 || n > 6) {
                 Toast.makeText(this, "Invalid input, number must be within range", Toast.LENGTH_SHORT).show();
-            } else if (n == number) {
+            } else if (n == num) {
                 Toast.makeText(this, "Congratulations ! Numbers match bossman", Toast.LENGTH_SHORT).show();
                 counter = counter + 1;
                 cb.setText(Integer.toString(counter));
             }
 
 
+    }
+
+
+    public void on_butoon_click2(View view){
+
+        ArrayList<String> rndlist = new ArrayList<String>();
+
+        rndlist.add("If you could go anywhere in the world, where would you go?");
+        rndlist.add("If you were stranded on a desert island, what three things would you want to take with you?");
+        rndlist.add("If you could eat only one food for the rest of your life, what would that be?");
+        rndlist.add("If you won a million dollars, what is the first thing you would buy?");
+        rndlist.add("If you could spaned the day with one fictional character, who would it be?");
+        rndlist.add("If you found a magic lantern and a genie gave you three wishes, what would you wish?");
+
+        int rn = (int) (Math.random()*6);
+        ls.setText(rndlist.get(rn));
+    }
+
+    public int rnd_num(){
+
+        Random r = new Random();
+        int number = r.nextInt(6);
+        return number;
     }
 }
