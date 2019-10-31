@@ -6,4 +6,6 @@
     <item name="numberEntered" type="id" />
     <item name="validate" type="id" />
     <item name="counter" type="id" />
+    <item name="button1" type="id" />
+    <item name="questionEntered" type="id" />
 </resources>

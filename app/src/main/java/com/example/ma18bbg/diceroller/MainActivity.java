@@ -1,6 +1,7 @@
 package com.example.ma18bbg.diceroller;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.RequiresApi;
@@ -34,6 +35,8 @@ public class MainActivity extends AppCompatActivity {
     private TextView cb;
     private TextView cv;
     private TextView ls;
+    private  Button button;
+    ArrayList<String> rndlist = new ArrayList<String>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +48,6 @@ public class MainActivity extends AppCompatActivity {
         cb = (TextView) findViewById(R.id.counter);
         cv = (TextView) findViewById(R.id.cview);
         ls = (TextView) this.findViewById(R.id.listview);
-
 
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -108,8 +110,6 @@ public class MainActivity extends AppCompatActivity {
 
     public void on_butoon_click2(View view){
 
-        ArrayList<String> rndlist = new ArrayList<String>();
-
         rndlist.add("If you could go anywhere in the world, where would you go?");
         rndlist.add("If you were stranded on a desert island, what three things would you want to take with you?");
         rndlist.add("If you could eat only one food for the rest of your life, what would that be?");
@@ -121,10 +121,33 @@ public class MainActivity extends AppCompatActivity {
         ls.setText(rndlist.get(rn));
     }
 
+    public ArrayList<String> getList(EditText questionEntered) {
+        return rndlist;
+    }
+
+
     public int rnd_num(){
 
         Random r = new Random();
         int number = r.nextInt(6);
         return number;
     }
+
+    public void on_butoon_click3(View view){
+
+        button = (Button) findViewById(R.id.button3);
+        button.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                openActivity2();
+            }
+        });
+    }
+
+    public void openActivity2(){
+        Intent intent = new Intent(MainActivity.this, Activity2.class);
+        startActivity(intent);
+    }
+
+
 }
