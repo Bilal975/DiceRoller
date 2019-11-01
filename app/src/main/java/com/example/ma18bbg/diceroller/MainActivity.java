@@ -110,21 +110,25 @@ public class MainActivity extends AppCompatActivity {
 
     public void on_butoon_click2(View view){
 
-        rndlist.add("If you could go anywhere in the world, where would you go?");
-        rndlist.add("If you were stranded on a desert island, what three things would you want to take with you?");
-        rndlist.add("If you could eat only one food for the rest of your life, what would that be?");
-        rndlist.add("If you won a million dollars, what is the first thing you would buy?");
-        rndlist.add("If you could spaned the day with one fictional character, who would it be?");
-        rndlist.add("If you found a magic lantern and a genie gave you three wishes, what would you wish?");
+        ArrayList<String> rndlist = new ArrayList<>();
+        rndlist.add("1) If you could go anywhere in the world, where would you go?");
+        rndlist.add("2) If you were stranded on a desert island, what three things would you want to take with you?");
+        rndlist.add("3) If you could eat only one food for the rest of your life, what would that be?");
+        rndlist.add("4) If you won a million dollars, what is the first thing you would buy?");
+        rndlist.add("5) If you could spaned the day with one fictional character, who would it be?");
+        rndlist.add("6) If you found a magic lantern and a genie gave you three wishes, what would you wish?");
 
-        int rn = (int) (Math.random()*6);
-        ls.setText(rndlist.get(rn));
+        Random rand = new Random();
+
+        int numberOfElements = 1;
+
+        for (int i = 0; i < numberOfElements; i++) {
+
+            int randomIndex = rand.nextInt(rndlist.size());
+            String randomElement = rndlist.get(randomIndex);
+           ls.setText(randomElement);
+        }
     }
-
-    public ArrayList<String> getList(EditText questionEntered) {
-        return rndlist;
-    }
-
 
     public int rnd_num(){
 

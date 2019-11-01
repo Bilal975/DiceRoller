@@ -39,8 +39,8 @@ public class Activity2 extends AppCompatActivity {
 
     public void savebutton(View view){
 
-        MainActivity list = new MainActivity();
-        list.getList(questionEntered);
+       // MainActivity list = new MainActivity();
+       // list.getList(questionEntered);
 
         button = (Button) findViewById(R.id.button1);
         button.setOnClickListener(new View.OnClickListener(){
